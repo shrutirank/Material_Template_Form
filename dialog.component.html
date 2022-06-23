@@ -1,0 +1,40 @@
+<!-- <mat-form-field appearance="fill">
+    <mat-label>Subject-Name</mat-label>
+    <input matInput  name="subject"    #subject>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Marks</mat-label>
+    <input matInput  name="marks" #marks >
+  </mat-form-field>
+
+<div mat-dialog-actions *ngFor="let item of data">
+<button mat-stroked-button color="primary" (click)="add()">ADD Subject</button>
+<button mat-stroked-button color="accent">Delete subject</button>
+</div> -->
+
+<ng-container>
+  <h2 matDialogTitle>Student Marks</h2>
+  <mat-dialog-content *ngFor="let item of data">
+    <p *ngIf="!myprop"><b>Subject:</b>{{item.subject}},<b>Marks:</b> {{item.marks}}</p>
+    <p *ngIf="myprop">Nothing</p>
+
+  </mat-dialog-content>
+</ng-container>
+
+
+<!-- <ng-container *ngFor="let item of data.subAry; let i=index" >
+  <mat-form-field appearance="fill">
+    <mat-label>Subject</mat-label>
+    <input matInput name="subject{{i}}"   [(ngModel)]="item.subject">
+  </mat-form-field>&nbsp;
+  <mat-form-field appearance="fill">
+    <mat-label>Marks</mat-label>
+    <input matInput name="marks{{i}}"  [(ngModel)]="item.marks" >
+  </mat-form-field>
+</ng-container> -->
+
+<!-- <b>subject</b>:{{formsubject}}
+<b>marks</b>:{{formmarks}} -->
+
+
+

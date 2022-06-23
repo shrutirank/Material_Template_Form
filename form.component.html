@@ -1,0 +1,104 @@
+
+<form #myform="ngForm">
+
+    <mat-form-field  appearance="fill">
+        <mat-label>Name:</mat-label>
+        <input matInput type="text" name="name" [(ngModel)]="data.name">
+      </mat-form-field>
+      <br>
+
+   <!-- <mat-label>Gender:</mat-label>
+   <mat-radio-group aria-label="Select an option">
+    <mat-radio-button  name="gender" value="male" [(ngModel)]="data.gender">Male</mat-radio-button>
+    <mat-radio-button  name="gender" value="female"[(ngModel)]="data.gender">Female</mat-radio-button>
+</mat-radio-group><br><br> -->
+
+<mat-label>Gender:</mat-label>
+Male:<input type="radio" name="gender"  value="male"  [(ngModel)]="data.gender">
+Feamle <input type="radio" name="gender"  value="female" [(ngModel)]="data.gender"><br><br>
+
+  <mat-label>Hobbie:</mat-label><br>
+  <div *ngFor="let item of checkboxJson;let i=index">
+   <mat-checkbox [(ngModel)]="item.checked" name="checkbox{{i}}">{{item.label}}</mat-checkbox>
+  </div>
+  
+
+  <mat-form-field appearance="fill">
+  <mat-label>Cars:</mat-label>
+  <mat-select name="cars" [(ngModel)]="data.cars">
+  <mat-option value="volvo">Volvo</mat-option>
+  <mat-option value="saab">Saab</mat-option>
+  <mat-option value="opel">Opel</mat-option>
+  <mat-option value="audi">Audi</mat-option>
+</mat-select>
+  </mat-form-field><br>
+
+<mat-form-field appearance="fill">
+<mat-label>Address:</mat-label>
+<textarea  matInput name="add" [(ngModel)]="data.add"></textarea>
+</mat-form-field><br>
+
+<mat-form-field appearance="fill">
+<mat-label>Date:</mat-label>
+<input matInput type="date" name="date" [(ngModel)]="data.date">
+</mat-form-field><br>
+
+ <!-- Add subject 
+  <mat-form-field appearance="fill">
+    <mat-label>Subject-Name</mat-label>
+    <input matInput value="subject" name="subject"  #subject>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Marks</mat-label>
+    <input matInput value="marks" name="marks"#marks >
+  </mat-form-field>-->
+
+  <!-- [(ngModel)]="sendValue"    [(ngModel)]="marksValue"-->
+
+  <ng-container *ngFor="let item of data.subAry; let i=index" >
+    <mat-form-field appearance="fill">
+      <mat-label>Subject</mat-label>
+      <input matInput  name="subject{{i}}" [(ngModel)]="item.subject">
+    </mat-form-field>&nbsp;
+    <mat-form-field appearance="fill">
+
+      <mat-label>Marks</mat-label>
+      <input matInput  name="marks{{i}}" [(ngModel)]="item.marks">
+    </mat-form-field>
+  <button mat-raised-button color="warn" (click)="deletesubject(i)">Remove</button><br>
+  </ng-container>
+
+
+  <button mat-stroked-button color="primary" (click)="addsubject()">ADD Subject</button><br><br>
+
+  <!-- <div *ngIf="dialogValue">
+   <b> subject</b>:{{dialogValue}}
+ Marks:{{dialogValue}}
+  </div> -->
+
+
+  <!-- <button mat-raised-button (click)="openDialog( -->
+
+    <!-- Add subject and Delete subject 
+  <div [formGroup]="company">
+    <ng-container formArrayName="admins">
+    <ng-container *ngFor="let admin of admins.controls;let index=index">
+      <div [formGroupName]="index">
+        <input id="subject" type="text" formControlName="subject" placeholder="subject" [(ngModel)]="data.subject">
+        <input id="marks" type="text" formControlName="marks" placeholder="Marks" [(ngModel)]="data.marks">
+        <button mat-stroked-button color="warn" (click)="deletesubject(index)"> Delete Subject</button>
+      </div>
+    </ng-container>
+    </ng-container>
+  </div>-->
+
+<!-- <h3>{{data.subAry | json}}</h3> -->
+  <!--      <button mat-stroked-button (click)="openSnackBar()">Add subject</button><br> -->
+
+     <!-- <button mat-raised-button color="warn" (click)="openDialog()">Show</button><br><br>  -->
+
+<button mat-raised-button color="accent" (click)="sdata();openSnackBar();myform.resetForm();">Save</button>
+<button mat-raised-button color="primary" (click)="showdata()">Data</button>
+
+</form>
+
